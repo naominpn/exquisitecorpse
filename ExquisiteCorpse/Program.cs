@@ -6,16 +6,44 @@ namespace ExquisiteCorpse
     {
         static void Main(string[] args)
         {
-            BuildACreature("ghost", "ghost", "ghost");
+            //Add a starting mode, so a user can select whether to randomly generate a creature or create one manually.
+            Console.WriteLine("Create a creature manually or randomly? (MANUAL/RANDOM) ");
+            string userChoice = Console.ReadLine().ToLower();
 
-            RandomMode();
+            if(userChoice == "manual")
+            {
+                UserCreate();
+            } else
+            {
+                Console.WriteLine("\nCreating random creature ... ");
+                RandomMode();
+            }
+
         }
+
+        //Recreate this program so that rather than outputting a creature immediately,
+        //it prompts a user to select which parts of each creature to use to build a new creature.
+
+        static void UserCreate()
+        {
+            Console.WriteLine("Choose a head: (GHOST/BUG/MONSTER) ");
+            string head = Console.ReadLine();
+            Console.WriteLine("Choose a body: (GHOST/BUG/MONSTER) ");
+            string body = Console.ReadLine();
+            Console.WriteLine("Choose feet: (GHOST/BUG/MONSTER) ");
+            string feet = Console.ReadLine();
+
+            Console.WriteLine("\nCreating creature ... ");
+            BuildACreature(head, body, feet);
+
+        }
+
 
         static void BuildACreature(string head, string body, string feet)
         {
-            int headNum = TranslateToNumber(head);
-            int bodyNum = TranslateToNumber(body);
-            int feetNum = TranslateToNumber(feet);
+            int headNum = TranslateToNumber(head.ToLower());
+            int bodyNum = TranslateToNumber(body.ToLower());
+            int feetNum = TranslateToNumber(feet.ToLower());
 
             SwitchCase(headNum, bodyNum, feetNum);
 
