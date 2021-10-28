@@ -41,9 +41,35 @@ namespace ExquisiteCorpse
 
         static void BuildACreature(string head, string body, string feet)
         {
-            int headNum = TranslateToNumber(head.ToLower());
-            int bodyNum = TranslateToNumber(body.ToLower());
-            int feetNum = TranslateToNumber(feet.ToLower());
+            Random randomNumber = new Random();
+
+            int headNum;
+            int bodyNum;
+            int feetNum;
+
+            if (head.ToUpper() != "ghost" || head.ToUpper() != "monster" || head.ToUpper() != "bug")
+            {
+                headNum = randomNumber.Next(1, 4);
+            } else
+            {
+                headNum = TranslateToNumber(head.ToUpper());
+            }
+
+            if (body.ToUpper() != "ghost" || body.ToUpper() != "monster" || body.ToUpper() != "bug")
+            {
+                bodyNum = randomNumber.Next(1, 4);
+            } else
+            {
+                bodyNum = TranslateToNumber(body.ToUpper());
+            }
+
+            if (feet.ToUpper() != "ghost" || feet.ToUpper() != "monster" || feet.ToUpper() != "bug")
+            {
+                feetNum = randomNumber.Next(1, 4);
+            } else
+            {
+                feetNum = TranslateToNumber(feet.ToUpper());
+            }
 
             SwitchCase(headNum, bodyNum, feetNum);
 
